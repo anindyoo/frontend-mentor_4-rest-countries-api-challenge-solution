@@ -11,7 +11,16 @@ module.exports = {
       lg: "1024px",
       xl: "1280px",
     },
-    extend: {},
+    extend: {
+      colors: {
+        "darkBlue": "hsl(209, 23%, 22%)",
+        "veryDarkBlue_DarkModeBg": "hsl(207, 26%, 17%)",
+        "veryDarkBlue_LightModeText": "hsl(200, 15%, 8%)",
+        "darkGray": "hsl(0, 0%, 52%)",
+        "veryLightGray": "hsl(0, 0%, 98%)",
+        "white": "hsl(0, 0%, 100%)",
+      }
+    },
   },
   plugins: [],
 }
