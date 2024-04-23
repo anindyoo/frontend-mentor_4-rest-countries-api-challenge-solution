@@ -19,7 +19,10 @@ module.exports = {
         "darkGray": "hsl(0, 0%, 52%)",
         "veryLightGray": "hsl(0, 0%, 98%)",
         "white": "hsl(0, 0%, 100%)",
-      }
+      },
+    },
+    dropShadow: {
+      "gray": "0 0 0.625rem hsla(00, 0%, 52%, 20%)",
     },
   },
   plugins: [],
