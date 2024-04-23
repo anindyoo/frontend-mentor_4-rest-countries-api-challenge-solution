@@ -6,3 +6,7 @@
   font-family: "Nunito Sans", sans-serif;
   @apply transition-colors duration-100 ease-in
 }
+
+body {
+  @apply bg-veryLightGray dark:bg-veryDarkBlue_DarkModeBg
+}
