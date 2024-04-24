@@ -11,7 +11,7 @@ const Home = () => {
   const showFilterSelect = () => setFilterSelectState(!filterSelectState);
   
   const filterClickHandler = (event) => {
-    const value = event.currentTarget.getAttribute('dataFilter');
+    const value = event.currentTarget.getAttribute('data-filter');
     setRegionFilterState(value);
   };
 
@@ -109,7 +109,7 @@ const Home = () => {
             {filterArray.map((region, index) => (
               <li
                 key={`list-` + index}
-                dataFilter={region}
+                data-filter={region}
                 onClick={filterClickHandler}
                 className="
                   rounded-sm
