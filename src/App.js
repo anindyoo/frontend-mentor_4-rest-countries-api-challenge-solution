@@ -7,15 +7,15 @@ function App() {
   const [darkModeState, setDarkModeState] = useState(false);
   
   const toggleDarkMode = () => {
-    setDarkModeState(!darkModeState)
-    document.body.classList.toggle("dark")
+    setDarkModeState(!darkModeState);
+    document.body.classList.toggle("dark");
   };
 
   return (
     <DarkModeContext.Provider value={{ darkModeState }}>
       <div className={`
         APP
-        h-screen
+        h-screen max-w-[90rem]
         text-veryDarkBlue_LightModeText dark:text-white
         px-4      
         lg:px-12
