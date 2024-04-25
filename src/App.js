@@ -15,7 +15,7 @@ function App() {
     <DarkModeContext.Provider value={{ darkModeState }}>
       <div className={`
         APP
-        h-screen max-w-[90rem]
+        h-screen max-w-[90rem] w-screen
         text-veryDarkBlue_LightModeText dark:text-white
         px-4      
         lg:px-12
