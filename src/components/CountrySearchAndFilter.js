@@ -1,11 +1,12 @@
 const CountrySearchAndFilter = (props) => {
   const {
+    searchInputState,
+    updateSearchInputState,
     regionFilterState,
     filterSelectState,
     toggleFilterSelect,
     addRegionFilter,
   } = props;
-
 
   const filterArray = ['All Region', 'Africa', 'America', 'Asia', 'Europe', 'Oceania'];
 
@@ -15,6 +16,11 @@ const CountrySearchAndFilter = (props) => {
     const value = event.currentTarget.getAttribute('data-filter');
     addRegionFilter(value);
   };
+
+  const handleSearchInputChange = (event) => {
+    const value = event.currentTarget.value;
+    updateSearchInputState(value);
+  }
 
   return (
     <section className="
@@ -50,14 +56,16 @@ const CountrySearchAndFilter = (props) => {
         </span>
         <input 
           id="searchInput"
+          onChange={handleSearchInputChange}
           type="text" 
           className={`
-            w-full
+            w-full rounded-md
             text-sm                
             pl-[4.5rem] pr-8 py-5
             bg-white dark:bg-darkBlue
             placeholder:text-darkGray dark:placeholder:text-white`
           }
+          value={searchInputState}
           placeholder="Search for a country..." />
       </label>
       <div className="
@@ -106,19 +114,24 @@ const CountrySearchAndFilter = (props) => {
           transition-all duration-200 ease-out
           ${filterSelectState ? `visible opacity-100` : `collapse opacity-0`}
         `}>
-          {filterArray.map((region, index) => (
-            <li
-              key={`list-` + index}
-              data-filter={region}
-              onClick={filterOptionClickHandler}
-              className="
-                rounded-sm
-                px-1 py-[0.125rem]
-                cursor-pointer
-                duration-75 ease-out
-                hover:bg-gray-100"
-            >{region}</li>
-          ))}            
+          {filterArray
+            .filter((region) => 
+              !searchInputState && (regionFilterState === '' && region === 'All Region') ? false : true
+            )
+            .map((region, index) => (
+              <li
+                key={`list-` + index}
+                data-filter={region}
+                onClick={filterOptionClickHandler}
+                className="
+                  rounded-sm
+                  px-1 py-[0.125rem]
+                  cursor-pointer
+                  duration-75 ease-out
+                  hover:bg-gray-100"
+              >{region}</li>
+            ))
+        }            
         </ul>
       </div>
     </section>
