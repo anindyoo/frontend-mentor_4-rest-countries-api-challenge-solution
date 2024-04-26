@@ -4,9 +4,8 @@
 
 * {
   font-family: "Nunito Sans", sans-serif;
-  @apply transition-colors duration-75 ease-in-out
 }
 
 body {
-  @apply flex justify-center bg-veryLightGray dark:bg-veryDarkBlue_DarkModeBg
+  @apply flex justify-center bg-veryLightGray dark:bg-veryDarkBlue_DarkModeBg transition-colors duration-75 ease-out  
 }
