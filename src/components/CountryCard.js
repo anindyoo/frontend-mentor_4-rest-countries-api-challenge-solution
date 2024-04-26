@@ -14,6 +14,7 @@ const CountryCard = (props) => {
   return (
     <li className="
       rounded-md
+      transition-colors duration-75 ease-in-out
       bg-white dark:bg-darkBlue
       overflow-hidden
       drop-shadow-gray dark:drop-shadow-darkGray">
