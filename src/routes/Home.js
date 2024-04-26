@@ -5,26 +5,32 @@ import LoadingCountryCard from "../components/LoadingCountryCard";
 import CountrySearchAndFilter from "../components/CountrySearchAndFilter";
 
 const API_BASE_URL = 'https://restcountries.com/v3.1';
+const API_SEARCH_BY_NAME_URL = 'https://restcountries.com/v3.1/name'
 const API_FIELDS_PARAM = 'fields=name,population,region,capital,flags';
 
 const Home = () => {
+  const [searchInputState, setSearchInputState] = useState('');
+  const [searchIsFoundState, setSearchIsFoundState] = useState(false);
   const [filterSelectState, setFilterSelectState] = useState(true);
-  const [regionFilterState, setRegionFilterState] = useState('All Region');
+  const [regionFilterState, setRegionFilterState] = useState('');
   const [countries, setCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   
+  const updateSearchInputState = (input) => setSearchInputState(input);
+
   const toggleFilterSelect = () => setFilterSelectState(!filterSelectState);
   const addRegionFilter = (region) => setRegionFilterState(region);
 
   const loadCountries = async (region) => {
-    const url = region === 'All Region' 
+    const url = 
+      region === 'All Region' || region === ''
         ? `${API_BASE_URL}/all?${API_FIELDS_PARAM}`
         : `${API_BASE_URL}/region/${region}?${API_FIELDS_PARAM}`;
         
     await axios.get(url)
       .then((response) => {
-        console.log(response.data[0]);
         setCountries(response.data);
+        setSearchInputState('');
       })
       .catch((error) => {
         console.log(error);
@@ -34,12 +40,38 @@ const Home = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    loadCountries(regionFilterState);
+    loadCountries(regionFilterState);    
   }, [regionFilterState]);
 
+
+  const searchCountries = async (keywords) => {
+    const formatKeywords = encodeURIComponent(keywords);
+    const searchUrl = `${API_SEARCH_BY_NAME_URL}/${formatKeywords}?${API_FIELDS_PARAM}`;
+    
+    await axios.get(searchUrl)
+      .then((response) => {
+        setRegionFilterState('');
+        setCountries(response.data);
+        setSearchIsFoundState(true);
+      })
+      .catch(() => {
+        setCountries([]);
+        setSearchIsFoundState(false);        
+        // console.log(error.response.data.status)
+      })
+      .finally(() => setIsLoading(false))
+  };
+
+  useEffect(() => {
+    setIsLoading(true);    
+    searchInputState ? searchCountries(searchInputState) : loadCountries(regionFilterState)
+  }, [searchInputState]);
+
   return (
-    <section className="py-12">
+    <section className="py-12">      
       <CountrySearchAndFilter 
+        updateSearchInputState={updateSearchInputState}
+        searchInputState={searchInputState}
         regionFilterState={regionFilterState}
         filterSelectState={filterSelectState}
         toggleFilterSelect={toggleFilterSelect}
@@ -53,8 +85,11 @@ const Home = () => {
         xl:grid-cols-4
         pt-12"
       >
+        {!countries.length && searchInputState.length > 0 && (
+          <p>No results for "{searchInputState}".</p>
+        )}
         {
-          isLoading ? (
+          searchIsFoundState && searchInputState.length && isLoading ? (
             [...Array(8)].map((_, index) => <LoadingCountryCard key={`loading-${index}`}/>)            
           )
           : countries.map((country, index) => 
