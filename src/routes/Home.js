@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import CountryCard from "../components/CountryCard";
 import axios from "axios";
@@ -8,7 +9,7 @@ import { API_BASE_URL, API_FIELDS_PARAM, API_SEARCH_BY_NAME_URL } from "../App";
 const Home = () => {
   const [searchInputState, setSearchInputState] = useState('');
   const [searchIsFoundState, setSearchIsFoundState] = useState(false);
-  const [filterSelectState, setFilterSelectState] = useState(true);
+  const [filterSelectState, setFilterSelectState] = useState(false);
   const [regionFilterState, setRegionFilterState] = useState('');
   const [countries, setCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
