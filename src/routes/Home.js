@@ -3,10 +3,7 @@ import CountryCard from "../components/CountryCard";
 import axios from "axios";
 import LoadingCountryCard from "../components/LoadingCountryCard";
 import CountrySearchAndFilter from "../components/CountrySearchAndFilter";
-
-const API_BASE_URL = 'https://restcountries.com/v3.1';
-const API_SEARCH_BY_NAME_URL = 'https://restcountries.com/v3.1/name'
-const API_FIELDS_PARAM = 'fields=name,population,region,capital,flags';
+import { API_BASE_URL, API_FIELDS_PARAM, API_SEARCH_BY_NAME_URL } from "../App";
 
 const Home = () => {
   const [searchInputState, setSearchInputState] = useState('');
@@ -57,7 +54,6 @@ const Home = () => {
       .catch(() => {
         setCountries([]);
         setSearchIsFoundState(false);        
-        // console.log(error.response.data.status)
       })
       .finally(() => setIsLoading(false))
   };
@@ -68,7 +64,7 @@ const Home = () => {
   }, [searchInputState]);
 
   return (
-    <section className="py-12">      
+    <section className="pt-12 pb-32">      
       <CountrySearchAndFilter 
         updateSearchInputState={updateSearchInputState}
         searchInputState={searchInputState}
@@ -101,6 +97,7 @@ const Home = () => {
               capital={country.capital}
               flag={country.flags.svg}
               flagAlt={country.flags.alt}
+              cca3={country.cca3}
             />)
           }
       </ul>
