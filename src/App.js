@@ -1,7 +1,11 @@
 import { createContext, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export const DarkModeContext = createContext();
+export const API_BASE_URL = 'https://restcountries.com/v3.1';
+export const API_SEARCH_BY_NAME_URL = 'https://restcountries.com/v3.1/name'
+export const API_SEARCH_BY_CODE_URL = 'https://restcountries.com/v3.1/alpha'
+export const API_FIELDS_PARAM = 'fields=name,population,region,capital,flags,cca3';
 
 function App() {
   const [darkModeState, setDarkModeState] = useState(false);
@@ -25,7 +29,9 @@ function App() {
           flex flex-row justify-between
           py-6"
         >
-          <h1 className="text-2xl font-extrabold">Where in the world?</h1>
+          <Link to={`/`}>
+            <h1 className="text-2xl font-extrabold">Where in the world?</h1>
+          </Link>
           <button 
             className="flex flex-row gap-2.5 items-center"
             onClick={toggleDarkMode}>
