@@ -24,6 +24,8 @@ module.exports = {
     dropShadow: {
       "darkGray": "0 0 0.5rem hsla(0, 0%, 12%, 50%)",
       "gray": "0 0 0.5rem hsla(0, 0%, 52%, 10%)",
+      "thickGray": "0 0 0.25rem hsla(0, 0%, 52%, 40%)",
+      "thickDarkGray": "0 0 0.25rem hsla(0, 0%, 52%, 10%)",
     },
   },
   plugins: [],
