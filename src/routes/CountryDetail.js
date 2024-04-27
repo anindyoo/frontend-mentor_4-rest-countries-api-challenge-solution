@@ -1,4 +1,5 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Link, useParams } from "react-router-dom";
 import { API_SEARCH_BY_CODE_URL } from "../App";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -6,7 +7,6 @@ import BackButton from "../components/BackButton";
 
 const CountryDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate()
 
   const [isLoading, setIsLoading] = useState(true);
   const [countryDetail, setCountryDetail] = useState({});
