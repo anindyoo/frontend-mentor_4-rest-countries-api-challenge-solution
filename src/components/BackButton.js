@@ -10,7 +10,7 @@ const BackButton = () => {
       className="
         flex flex-row justify-center items-center gap-3
         py-[0.563rem]
-        max-w-[8.5rem] w-full rounded-[0.125rem]
+        max-w-[8.5rem] w-full rounded-md
         bg-white dark:bg-darkBlue
         drop-shadow-thickGray dark:drop-shadow-thickDarkGray"
     >
