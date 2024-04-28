@@ -65,28 +65,40 @@ const CountryDetail = () => {
   }, [id]);
 
   return (
-    <section className="pt-20">
+    <section className="
+      COUNTRY-DETAIL
+      grow
+      pt-10 lg:pt-20
+      px-3 lg:px-0
+      max-w-[80rem]"
+    >
       <BackButton />
       {isLoading ? 'Loading...' : ( 
         <section className="
-          flex flex-row gap-[7.5rem]
-          py-10"
+          COUNTRY-DETAIL-CONTENT
+          flex flex-col gap-y-[2.875rem] lg:flex-row lg:gap-16 lg:gap-y-0 xl:gap-x-[7.5rem]
+          py-16 lg:py-10"
         >
           <img 
             src={countryDetail.flags.svg} 
             alt={countryDetail.flags.alt ? countryDetail.flags.alt : `Flag of ${countryDetail.name}`}
             className="
-              w-full h-full              
-              md:max-w-[35rem] md:max-h-[25rem]" 
+              w-full h-auto
+              max-h-[14.375rem]              
+              lg:max-w-[35rem] md:max-h-[25rem]" 
           />
-          <article className="w-full">
-            <h1 className="text-[2rem] font-bold">{countryDetail.name.common}</h1>
+          <article className="w-full lg:pt-[2.375rem]">
+            <h1 className="text-[1.375rem] md:text-[2rem] font-semibold md:font-bold">{countryDetail.name.common}</h1>
             <div className="
-              flex felx-row justify-between              
-              pt-[1.875rem]">
-              <section className="            
-                flex flex-col gap-2.5
-                max-w-[18.75rem] w-full"
+              DETAIL-WRAPPER
+              flex flex-col md:flex-row justify-between gap-y-12 lg:gap-4           
+              pt-[1.875rem]
+              text-sm md:text-base"
+            >
+              <section className="     
+                DETAIL-LEFT       
+                flex flex-col gap-y-4 lg:gap-2.5
+                lg:max-w-[18.75rem] w-full"
               >
                 <h2>
                   <span className="font-semibold">Native Name: </span>
@@ -110,8 +122,9 @@ const CountryDetail = () => {
                 </h2>
               </section>
               <section className="
-                flex flex-col gap-2.5        
-                max-w-[15.75rem] w-full"
+                DETAIL-RIGHT
+                flex flex-col gap-y-4 lg:gap-2.5        
+                lg:max-w-[15.75rem] w-full"
               >
                 <h2>
                   <span className="font-semibold">Top Level Domain: </span>
@@ -128,12 +141,13 @@ const CountryDetail = () => {
               </section>
             </div>
             <div className="
-              flex flex-row gap-4
-              pt-[4.5rem]">
-              <h2 className="font-semibold">Border Countries:</h2>
+              BORDER-COUNTRIES-WRAPPER
+              flex flex-col gap-[1.125rem] lg:flex-row lg:gap-4 items-baseline
+              pt-11 lg:pt-[4.5rem]"
+            >
+              <h2 className="text-base font-semibold">Border Countries:</h2>
               <div className="
-                flex flow-row gap-2.5
-                "
+                flex flow-row gap-2.5 flex-wrap"
               >
                 {countryDetail.borders.map((border, index) => (
                   <Link 

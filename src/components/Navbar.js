@@ -21,7 +21,8 @@ const Navbar = () => {
         HEADER-CONTENT
         flex flex-row justify-between
         max-w-[90rem] grow
-        py-8 md:py-6 px-4 md:px-20">
+        py-8 xl:py-6 
+        px-4 md:px-10 lg:px-12 xl:px-20">
         <Link to={`/`}>
           <h1 className="text-sm md:text-2xl font-extrabold">Where in the world?</h1>
         </Link>
