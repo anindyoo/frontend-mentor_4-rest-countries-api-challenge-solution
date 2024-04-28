@@ -23,7 +23,7 @@ const CountryCard = (props) => {
       drop-shadow-gray dark:drop-shadow-darkGray"
     >
       <Link
-        to={`/${cca3}`}  
+        to={`/country/${cca3}`}  
       >
         <img 
           src={flag} 

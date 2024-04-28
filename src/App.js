@@ -1,8 +1,9 @@
 import { createContext, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import Main from "./layout/Main";
 import Home from "./routes/Home";
 import CountryDetail from "./routes/CountryDetail";
+import NotFound from "./routes/NotFound";
 
 export const DarkModeContext = createContext();
 export const API_BASE_URL = 'https://restcountries.com/v3.1';
@@ -18,7 +19,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Main />} exact>
           <Route index element={<Home />} />
-          <Route path=":id" element={<CountryDetail />} exact />
+          <Route path="country" exact>
+            <Route path=":id" element={<CountryDetail />} />
+          </Route>
         </Route>
       </Routes> 
     </DarkModeContext.Provider>

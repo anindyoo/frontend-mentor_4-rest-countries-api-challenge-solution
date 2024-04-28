@@ -152,7 +152,7 @@ const CountryDetail = () => {
                 {countryDetail.borders.map((border, index) => (
                   <Link 
                     key={border + '-' + index}
-                    to={`/${border}`}
+                    to={`/country/${border}`}
                     className="
                       px-7 py-1
                       rounded-sm
