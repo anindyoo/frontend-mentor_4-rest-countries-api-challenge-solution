@@ -25,7 +25,6 @@ const CountryDetail = () => {
 
     await axios.get(detailUrl)
       .then((response) => {        
-        console.log(response.data);
         setCountryDetail(response.data);
         
         const nativeNames = response.data.name.nativeName;
