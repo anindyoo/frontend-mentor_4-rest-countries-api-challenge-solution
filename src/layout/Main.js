@@ -14,6 +14,7 @@ const Main = () => {
         MAIN-CONTENT
         flex justify-center
         w-screen
+        px-4
         md:px-10        
         lg:px-12
         xl:px-20"

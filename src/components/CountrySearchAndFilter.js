@@ -25,7 +25,7 @@ const CountrySearchAndFilter = (props) => {
   return (
     <section className="
       SEARCH-AND-FILTER-WRAPPER
-      flex flex-row justify-between
+      flex flex-col gap-y-10 md:flex-row justify-between
       text-sm
     ">
       <label
@@ -33,7 +33,7 @@ const CountrySearchAndFilter = (props) => {
         className="
           flex flex-row gap-6 items-center
           relative
-          max-w-[30rem] rounded-md overflow-hidden
+          md:max-w-[30rem] rounded-md overflow-hidden
           bg-white dark:bg-darkBlue
           drop-shadow-gray dark:drop-shadow-darkGray"
       >
@@ -44,6 +44,7 @@ const CountrySearchAndFilter = (props) => {
             viewBox="0 0 17 17" 
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
+            className="w-3.5 md:w-auto h-auto"
           >
             <path 
               d="M16 16L10.4288 10.4287M10.4288 10.4287C11.4646 9.39291 12.0465 7.98806 12.0465 6.52321C12.0465 5.05837 11.4646 3.65351 10.4288 2.61771C9.39297 1.58191 7.98811 1 6.52325 1C5.0584 1 3.65353 1.58191 2.61772 2.61771C1.58191 3.65351 1 5.05837 1 6.52321C1 7.98806 1.58191 9.39291 2.61772 10.4287C3.65353 11.4645 5.0584 12.0464 6.52325 12.0464C7.98811 12.0464 9.39297 11.4645 10.4288 10.4287Z" 
@@ -92,6 +93,7 @@ const CountrySearchAndFilter = (props) => {
               viewBox="0 0 10 6" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
+              className="w-2 md:w-auto h-auto"
             >
               <path 
                 d="M9 1L5 5L1 1" 

@@ -65,7 +65,11 @@ const Home = () => {
   }, [searchInputState]);
 
   return (
-    <section className="pt-12 pb-32">      
+    <section className="
+      HOME-CONTAINER
+      grow
+      pt-12 pb-32 
+      max-w-[80rem]">      
       <CountrySearchAndFilter 
         updateSearchInputState={updateSearchInputState}
         searchInputState={searchInputState}
@@ -76,10 +80,12 @@ const Home = () => {
       />
       <ul className="
         COUNTRY-CARDS-LIST
-        grid grid-cols-1 gap-[4.688rem]
-        md:grid-cols-2
-        lg:grid-cols-3
-        xl:grid-cols-4
+        flex flex-col gap-10
+        px-10 md:px-0
+        gap-y-10 md:gap-y-[4.688rem]        
+        md:grid md:grid-cols-[auto,auto]
+        lg:grid-cols-[auto,auto,auto] 
+        xl:grid-cols-[auto,auto,auto,auto]
         pt-12"
       >
         {!countries.length && searchInputState.length > 0 && (

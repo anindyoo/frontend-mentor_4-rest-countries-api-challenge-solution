@@ -15,26 +15,31 @@ const CountryCard = (props) => {
   const formattedCapital = capital.length ? capital.join(', ') : '-';
 
   return (
-    <Link
-      to={`/${cca3}`}  
+    <li className="
+      w-full md:w-[19.5rem] lg:w-[16.5rem] rounded-md
+      transition-colors duration-75 ease-in-out
+      bg-white dark:bg-darkBlue
+      overflow-hidden
+      drop-shadow-gray dark:drop-shadow-darkGray"
     >
-      <li className="
-        rounded-md
-        transition-colors duration-75 ease-in-out
-        bg-white dark:bg-darkBlue
-        overflow-hidden
-        drop-shadow-gray dark:drop-shadow-darkGray">
+      <Link
+        to={`/${cca3}`}  
+      >
         <img 
           src={flag} 
           alt={flagAlt ? flagAlt : `Flag of ${name}`} 
           className="
-            w-[16.5rem] h-[10rem]
+            w-full h-40 md:h-[10rem]
             object-cover"          
         />
-        <section className="flex flex-col p-6 pb-11 gap-y-4 max-h-[11rem]">
-          <h1 className="text-lg font-bold">{name}</h1>
+        <section className="
+          flex flex-col gap-y-4 
+          p-6 pb-11
+          max-h-[11rem]"
+        >
+          <h1 className="text-4lg font-bold">{name}</h1>
           <div className="
-            flex flex-col gap-y-[0.313rem]
+            flex flex-col gap-y-[0.375rem] md:gap-y-[0.313rem]
             text-sm font-semibold"
           >
             <h2>
@@ -51,8 +56,8 @@ const CountryCard = (props) => {
             </h2>
           </div>
         </section>
-      </li>
-    </Link>
+      </Link>
+    </li>
   )
 }
 
