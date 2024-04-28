@@ -4,11 +4,14 @@ import { API_SEARCH_BY_CODE_URL } from "../App";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import BackButton from "../components/BackButton";
+import PageNotFound from "./PageNotFound";
 
 const CountryDetail = () => {
   const { id } = useParams();
+  const notFoundMessage = 'Sorry, the country you were looking for was not found.';
 
   const [isLoading, setIsLoading] = useState(true);
+  const [countryNotFound, setCountryNotFound] = useState(false);
   const [countryDetail, setCountryDetail] = useState({});
   const [nativeNameState, setNativeNameState] = useState('');
   const [capitalState, setCapitalState] = useState('');
@@ -55,6 +58,7 @@ const CountryDetail = () => {
       })
       .catch((error) => {
         console.log(error);
+        setCountryNotFound(true);
       })
       .finally(() => setIsLoading(false));    
   }
@@ -65,6 +69,7 @@ const CountryDetail = () => {
   }, [id]);
 
   return (
+    countryNotFound ? <PageNotFound message={notFoundMessage} /> : (
     <section className="
       COUNTRY-DETAIL
       grow
@@ -72,8 +77,9 @@ const CountryDetail = () => {
       px-3 lg:px-0
       max-w-[80rem]"
     >
-      <BackButton />
-      {isLoading ? 'Loading...' : ( 
+      { isLoading ? 'Loading...' : ( 
+        <>
+        <BackButton />
         <section className="
           COUNTRY-DETAIL-CONTENT
           flex flex-col gap-y-[2.875rem] lg:flex-row lg:gap-16 lg:gap-y-0 xl:gap-x-[7.5rem]
@@ -166,8 +172,10 @@ const CountryDetail = () => {
             </div>
           </article>
         </section>
+        </>
       )}
     </section>
+    )
   )
 }
 
