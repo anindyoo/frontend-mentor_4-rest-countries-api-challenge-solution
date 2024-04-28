@@ -7,5 +7,5 @@
 }
 
 body {
-  @apply flex justify-center bg-veryLightGray dark:bg-veryDarkBlue_DarkModeBg transition-colors duration-75 ease-out  
+  @apply w-screen bg-veryLightGray dark:bg-veryDarkBlue_DarkModeBg transition-colors duration-75 ease-out  
 }
