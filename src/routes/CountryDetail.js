@@ -155,7 +155,8 @@ const CountryDetail = () => {
               <div className="
                 flex flow-row gap-2.5 flex-wrap"
               >
-                {countryDetail.borders.map((border, index) => (
+                {!countryDetail.borders.length ? <p className="italic">No data.</p>
+                  : countryDetail.borders.map((border, index) => (
                   <Link 
                     key={border + '-' + index}
                     to={`/country/${border}`}
