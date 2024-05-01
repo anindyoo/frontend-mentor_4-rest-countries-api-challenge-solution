@@ -82,7 +82,7 @@ const Home = () => {
         COUNTRY-CARDS-LIST
         flex flex-col gap-10 justify-between
         px-10 md:px-0
-        gap-y-10
+        gap-y-[4.688rem]
         md:grid md:grid-cols-[auto,auto]
         lg:grid-cols-[auto,auto,auto] 
         xl:grid-cols-[auto,auto,auto,auto]
